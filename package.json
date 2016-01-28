@@ -1,0 +1,19 @@
+{
+  "name": "turnUp",
+  "version": "1.0.0",
+  "description": "Help poor students turn up for less.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bankole Adebajo",
+  "license": "ISC",
+  "dependencies": {
+    "async-waterfall": "^0.1.5",
+    "express": "^4.13.3",
+    "mongodb": "^2.1.3",
+    "mongoose": "^4.3.4",
+    "q": "^1.4.1",
+    "request": "^2.67.0"
+  }
+}
