@@ -15,6 +15,7 @@
 		B19C70F01C3DDF0F0021D6F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B19C70EE1C3DDF0F0021D6F1 /* LaunchScreen.storyboard */; };
 		B19C70FB1C3DDF0F0021D6F1 /* turnupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19C70FA1C3DDF0F0021D6F1 /* turnupTests.swift */; };
 		B19C71061C3DDF0F0021D6F1 /* turnupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19C71051C3DDF0F0021D6F1 /* turnupUITests.swift */; };
+		B1E606291C894BAE00FF9B94 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E606281C894BAE00FF9B94 /* Drink.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		B19C71011C3DDF0F0021D6F1 /* turnupUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = turnupUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B19C71051C3DDF0F0021D6F1 /* turnupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = turnupUITests.swift; sourceTree = "<group>"; };
 		B19C71071C3DDF0F0021D6F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1E606281C894BAE00FF9B94 /* Drink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				B19C70EE1C3DDF0F0021D6F1 /* LaunchScreen.storyboard */,
 				B19C70F11C3DDF0F0021D6F1 /* Info.plist */,
 				B19C70E91C3DDF0F0021D6F1 /* turnup.xcdatamodeld */,
+				B1E606281C894BAE00FF9B94 /* Drink.swift */,
 			);
 			path = turnup;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			files = (
 				B19C70E51C3DDF0F0021D6F1 /* ViewController.swift in Sources */,
 				B19C70EB1C3DDF0F0021D6F1 /* turnup.xcdatamodeld in Sources */,
+				B1E606291C894BAE00FF9B94 /* Drink.swift in Sources */,
 				B19C70E31C3DDF0F0021D6F1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +490,7 @@
 				B19C710C1C3DDF0F0021D6F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B19C710D1C3DDF0F0021D6F1 /* Build configuration list for PBXNativeTarget "turnupTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +499,7 @@
 				B19C710F1C3DDF0F0021D6F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B19C71101C3DDF0F0021D6F1 /* Build configuration list for PBXNativeTarget "turnupUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +508,7 @@
 				B19C71121C3DDF0F0021D6F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
