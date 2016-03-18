@@ -24,7 +24,7 @@ class SearchViewController: UIViewController {
         let searchQuery:String = searchTextField.text!
         
         //Don't do anything for blank search
-        if searchQuery.isEmpty {
+        if searchQuery.isEmpty || containsLetters(searchQuery){
             return
         }
         
@@ -33,11 +33,11 @@ class SearchViewController: UIViewController {
     }
     
     func performSearch(query: String) {
-        let url = NSURL(string: "https://www.google.com")
+        let url = NSURL(string: "http://localhost:8080/drink-for-price?price=\(query)")
         
         let request = NSMutableURLRequest(URL: url!)
         let session = NSURLSession.sharedSession()
-                
+        
         request.HTTPMethod = "GET"
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         let _: NSError?
@@ -45,17 +45,49 @@ class SearchViewController: UIViewController {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
+        var resultJSON:NSArray?
+        
         let task = session.dataTaskWithRequest(request, completionHandler: {data, response, err -> Void in
             
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             
-            print("Response: \(response)")
-            let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("Body: \(strData)")
+            resultJSON = self.nsdataToJSON(data!)
+            print(resultJSON![0]["_id"])
             
+            self.saveData(resultJSON)
         })
         
+        
         task.resume()
+        
+    }
+    
+    func saveData(results:NSArray?){
+        var drinks = [Drink]()
+        for var i = 0; i < results?.count; i++ {
+            drinks.append((Drink(info: (results![i] as! NSDictionary)))!)
+        }
+        
+    }
+    
+    // Convert from NSData to json object
+    func nsdataToJSON(data: NSData) -> NSArray? {
+        var json:AnyObject?
+        do {
+            json = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+        } catch {
+            print(error)
+        }
+        return (json as! NSArray)
+    }
+    
+    func containsLetters(input: String) -> Bool {
+        for chr in input.characters {
+            if ((chr >= "a" && chr <= "z") || (chr >= "A" && chr <= "Z")) {
+                return true
+            }
+        }
+        return false
     }
 }
 

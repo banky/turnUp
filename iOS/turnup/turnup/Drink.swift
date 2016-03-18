@@ -13,7 +13,7 @@ class Drink {
     
     var alcoholContent:Double
     var description: String?
-    var id: Int
+    var id: String
     var is_dead: Bool
     var is_discontinued: Bool
     var name: String
@@ -30,34 +30,28 @@ class Drink {
     //MARK: Initialization
     
     //Fat initializer
-    init?(alcoholContent:Double, description: String?, id: Int,is_dead: Bool,is_discontinued: Bool,
-        name: String, origin: String,package_unit_type: String?, package_unit_volume_in_milliliters: Double,
-        price_in_cents: Int, price_per_liter_of_alcohol_in_cents: Int, primary_category: String, image_url: String?,
-        image_thumb_url: String?, tags: String) {
-            
-            self.alcoholContent = alcoholContent;
-            self.description = description
-            self.id = id
-            self.is_dead = is_dead
-            self.is_discontinued = is_discontinued
-            self.name = name
-            self.origin = origin
-            self.package_unit_type = package_unit_type
-            self.package_unit_volume_in_milliliters = package_unit_volume_in_milliliters
-            self.price_in_cents = price_in_cents
-            self.price_per_liter_of_alcohol_in_cents = price_per_liter_of_alcohol_in_cents
-            self.primary_category = primary_category
-            self.image_url = image_url
-            self.image_thumb_url = image_thumb_url
-            self.tags = tags
-            
-            //Fail if there are any errors
-            if alcoholContent < 0 || id < 0 || name.isEmpty || origin.isEmpty
-                || package_unit_volume_in_milliliters < 0 || price_in_cents < 0 || price_per_liter_of_alcohol_in_cents < 0
-                || primary_category.isEmpty || tags.isEmpty {
-                    return nil
-            }
+    init?(info:NSDictionary) {
+        self.alcoholContent = info["alcohol_content"] as! Double
+        self.description = info["description"] as? String
+        self.id = info["_id"] as! String
+        self.is_dead = info["is_dead"] as! Bool
+        self.is_discontinued = info["is_discontinued"] as! Bool
+        self.name = info["name"] as! String
+        self.origin = info["origin"] as! String
+        self.package_unit_type = info["package_unit_type"] as? String
+        self.package_unit_volume_in_milliliters = info["package_unit_volume_in_milliliters"] as! Double
+        self.price_in_cents = info["price_in_cents"] as! Int
+        self.price_per_liter_of_alcohol_in_cents = info["price_per_liter_of_alcohol_in_cents"] as! Int
+        self.primary_category = info["primary_category"] as! String
+        self.image_url = info["image_url"] as? String
+        self.image_thumb_url = info["image_thumb_url"] as? String
+        self.tags = info["tags"] as! String
+
+        if alcoholContent < 0 || id.isEmpty || name.isEmpty || origin.isEmpty
+            || package_unit_volume_in_milliliters < 0 || price_in_cents < 0 || price_per_liter_of_alcohol_in_cents < 0
+            || primary_category.isEmpty || tags.isEmpty {
+                return nil
+        }
 
     }
-    
 }
