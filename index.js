@@ -85,15 +85,16 @@
         ])   
     }
 
-    refreshDatabase();
+    //refreshDatabase();
 
     app.get('/drink-for-price', function (req, res) {
         var price = req.query.price;
         mongodb.getDrinksForPrice(req, res, price);
     });
 
-    app.get('/max-fucked-up-for-price', function (req, res) {
-        var price 
+    app.get('/max-alcohol-to-price', function (req, res) {
+        var price = req.query.price;
+        mongodb.getMaxAlcoholToPrice(req, res, price);
     });    
     app.listen(PORT);
     console.log('The magic happens on port ' + PORT);

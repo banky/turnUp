@@ -16,8 +16,6 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
     
     @IBAction func searchButton(sender: AnyObject) {
@@ -33,7 +31,7 @@ class SearchViewController: UIViewController {
     }
     
     func performSearch(query: String) {
-        let url = NSURL(string: "http://localhost:8080/drink-for-price?price=\(query)")
+        let url = NSURL(string: "http://bankoleadebajo.com:8080/max-alcohol-to-price?price=\(query)")
         
         let request = NSMutableURLRequest(URL: url!)
         let session = NSURLSession.sharedSession()
@@ -52,7 +50,8 @@ class SearchViewController: UIViewController {
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             
             resultJSON = self.nsdataToJSON(data!)
-            print(resultJSON![0]["_id"])
+            
+            print(resultJSON)
             
             self.saveData(resultJSON)
         })
@@ -62,12 +61,12 @@ class SearchViewController: UIViewController {
         
     }
     
+    //Save the data received to an array
     func saveData(results:NSArray?){
         var drinks = [Drink]()
         for var i = 0; i < results?.count; i++ {
             drinks.append((Drink(info: (results![i] as! NSDictionary)))!)
         }
-        
     }
     
     // Convert from NSData to json object
@@ -81,6 +80,7 @@ class SearchViewController: UIViewController {
         return (json as! NSArray)
     }
     
+    //return true if a string contains letters
     func containsLetters(input: String) -> Bool {
         for chr in input.characters {
             if ((chr >= "a" && chr <= "z") || (chr >= "A" && chr <= "Z")) {

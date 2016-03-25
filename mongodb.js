@@ -90,6 +90,20 @@
 			});
 		};
 
+		exports.getMaxAlcoholToPrice = function(req, res, price) {
+			Drink.find({'price_in_cents': price}).sort({'price_per_liter_of_alcohol_in_cents':1}).exec(function(err, drinks) { 
+				if (!err) {
+			 		res.json(drinks).status(200);
+			 	}
+			});
+
+			// Drink.find({'price_in_cents': price}).sort({'price_per_liter_of_alcohol_in_cents':1}).toArray(function(err, drinks) {
+			// 	if (!err) {
+			// 		res.json(drinks).status(200);
+			// 	}
+			// });
+		};
+
 		exports.getDrinksGreaterThanPrice = function(price) {
 			Drink.find({'price_in_cents': {$gt: price}}, function(err, drinks) {
 				if (!err) {
@@ -112,8 +126,7 @@
 					return drinks;
 				}
 			});			
-		};
-		
+		};		
 	});
 
 	mongoose.connect('mongodb://localhost/turnup');
